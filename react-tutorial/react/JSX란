@@ -1,0 +1,53 @@
+; - JSX
+    JavaScript의 확장 문법으로, React에서 UI를 구성할 때 사용된다.
+    JavaScript 코드 안에서 HTML과 유사한 구문을 사용한다.
+    Babel과 같은 트랜스파일러를 통해 변환되며, 이 과정에서 JavaScript로 변환된다.
+
+
+; - 변환 과정
+    const element = <h1>Hello, world!</h1>;
+    |
+    const element = React.createElement('h1', null, 'Hello, world!');
+
+
+; -규칙
+
+1. 태그는 꼭 닫혀야 한다. 
+   <div>Hello</div>
+
+   태그 사이에 넣고싶지 않을 경우 : Self-Closing Tags를 사용하자
+   <Hello />
+
+2. 두 개 이상의 태그는 감싸야 한다.
+   <>
+      <div> Hello <div/>
+      <p> World <p/>
+   </>
+   불필요하게 감싸는 태그를 만들고 싶지 않을 경우 없는 비어있는 태그(fragment)로 감싸주면 된다.
+
+3. JavaScript의 값을 JSX 내부에서 사용하고 싶을 때
+   const name = 'Hello';
+   return <div> World, {name} </div>
+
+4. style을 넣을 때는 객체 형태로 넣어주어야 한다.
+   const style = {
+       background: 'red',
+   }
+   return (
+       <div style={style}></div>
+   )
+
+5. CSS 클래스를 사용할 때 className으로 입력해주어야 한다.
+   return (
+       <div className="my-style"></div>
+   )
+
+6. 주석 작성
+   return (
+       {/* 주석 작성 법 */}
+       <div style={style}>
+            <input
+                // 주석 작성 법
+            />
+       </div>
+)
